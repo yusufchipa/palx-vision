@@ -66,8 +66,8 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
-    font-feature-settings: "ss01", "ss02";
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
   }
 
   ::selection {
@@ -79,12 +79,13 @@
 @layer components {
   /* Typography utilities */
   .font-display {
-    font-family: 'Archivo Black', 'Bricolage Grotesque', sans-serif;
-    letter-spacing: -0.04em;
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.045em;
     line-height: 0.88;
   }
   .font-grotesk {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: 'Inter Tight', system-ui, sans-serif;
   }
   .font-serif-display {
     font-family: 'Fraunces', serif;
