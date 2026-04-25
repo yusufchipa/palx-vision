@@ -12,7 +12,7 @@ const projectTypes = [
 const budgets = ["< ₹1L", "₹1–5L", "₹5–15L", "₹15L+", "Let's talk"];
 const timelines = ["ASAP", "1–3 months", "3–6 months", "Flexible"];
 
-const WHATSAPP_NUMBER = "919999999999";
+const WHATSAPP_NUMBER = "916375788511";
 
 export const Contact = () => {
   const [name, setName] = useState("");
@@ -58,11 +58,10 @@ export const Contact = () => {
     <button
       type="button"
       onClick={onClick}
-      className={`font-mono-label px-3 py-2 border-2 transition-colors ${
-        active
+      className={`font-mono-label px-3 py-2 border-2 transition-colors ${active
           ? "bg-primary border-primary text-primary-foreground"
           : "border-background/30 text-background/80 hover:border-background"
-      }`}
+        }`}
     >
       {children}
     </button>
@@ -178,13 +177,13 @@ export const Contact = () => {
           <div className="border-2 border-background/30 p-6">
             <p className="font-mono-label text-background/50 mb-4">Prefer the old way?</p>
             <div className="space-y-4">
-              <a href="mailto:hello@palx.studio" className="block group">
+              <a href="mailto:palx.hub@gmail.com" className="block group">
                 <p className="font-mono-label text-background/50">Email</p>
-                <p className="font-serif-display text-2xl group-hover:text-primary transition-colors">hello@palx.studio</p>
+                <p className="font-serif-display text-2xl group-hover:text-primary transition-colors">palx.hub@gmail.com</p>
               </a>
-              <a href="tel:+919999999999" className="block group">
+              <a href="tel:+916375788511" className="block group">
                 <p className="font-mono-label text-background/50">Phone</p>
-                <p className="font-serif-display text-2xl group-hover:text-primary transition-colors">+91 99999 99999</p>
+                <p className="font-serif-display text-2xl group-hover:text-primary transition-colors">+91 63757 88511</p>
               </a>
             </div>
           </div>
@@ -193,7 +192,7 @@ export const Contact = () => {
           <div>
             <p className="font-mono-label text-background/50 mb-3">Studio</p>
             <p className="font-serif-display text-xl leading-snug">
-              Lake Pichola Road,<br />
+              Sector-14,<br />
               Udaipur, Rajasthan 313001<br />
               India
             </p>

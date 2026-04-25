@@ -19,7 +19,7 @@ export const Footer = () => {
           </div>
           <div className="col-span-6 md:col-span-4">
             <p className="font-mono-label text-foreground/50 mb-3">Contact</p>
-            <p className="font-grotesk">hello@palx.studio<br />+91 99999 99999</p>
+            <p className="font-grotesk">palx.hub@gmail.com<br />+91 63757 88511</p>
           </div>
         </div>
       </div>
