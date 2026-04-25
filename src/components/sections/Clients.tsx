@@ -1,4 +1,4 @@
-const logos = ["VANAL", "SOLACE", "LUW", "BAMNU", "PULSE", "TERRA", "NORD", "MAYA", "KIRAN", "OASIS", "INDIGO", "SAGE"];
+const logos = ["NYOTO", "T.O.H.C.", "AMANTRA", "TRAVCO", "TURANT", "MUMAL", "CONNECTEZEE", "DCisLIVE", "AMANTRA SHILPI", "OXYGEN", "PALX", "STUDIO"];
 
 export const Clients = () => {
   return (
