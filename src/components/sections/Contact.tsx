@@ -1,135 +1,225 @@
 import { useMemo, useState } from "react";
 
-const projectOptions = [
-  { v: "a website", k: "website" },
-  { v: "a mobile app", k: "mobile app" },
-  { v: "a brand identity", k: "branding" },
-  { v: "a photoshoot", k: "photoshoot" },
-  { v: "a marketing campaign", k: "marketing" },
+const projectTypes = [
+  "Website",
+  "Mobile App",
+  "Brand Identity",
+  "Photography",
+  "Marketing",
+  "Other",
 ];
 
-const budgets = [
-  { v: "under ₹1L", k: "<1L" },
-  { v: "₹1L–5L", k: "1-5L" },
-  { v: "₹5L+", k: "5L+" },
-  { v: "let's talk", k: "open" },
-];
+const budgets = ["< ₹1L", "₹1–5L", "₹5–15L", "₹15L+", "Let's talk"];
+const timelines = ["ASAP", "1–3 months", "3–6 months", "Flexible"];
 
-// Replace with real number
 const WHATSAPP_NUMBER = "919999999999";
 
 export const Contact = () => {
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
-  const [project, setProject] = useState(projectOptions[0].v);
-  const [budget, setBudget] = useState(budgets[1].v);
   const [email, setEmail] = useState("");
+  const [type, setType] = useState(projectTypes[0]);
+  const [budget, setBudget] = useState(budgets[1]);
+  const [timeline, setTimeline] = useState(timelines[1]);
+  const [details, setDetails] = useState("");
 
   const message = useMemo(() => {
-    const n = name || "[your name]";
-    const c = company || "[company]";
-    const e = email || "[email]";
-    return `Hi PalX, I'm ${n} from ${c}. I'd love to talk about ${project} project with a budget around ${budget}. You can reach me at ${e}.`;
-  }, [name, company, project, budget, email]);
+    const lines = [
+      `Hi PalX,`,
+      ``,
+      `My name is ${name || "[name]"} from ${company || "[company]"}.`,
+      ``,
+      `Project type: ${type}`,
+      `Budget: ${budget}`,
+      `Timeline: ${timeline}`,
+      ``,
+      `About the project:`,
+      details || "[a few words about what we want to build]",
+      ``,
+      `Reach me at: ${email || "[email]"}`,
+    ];
+    return lines.join("\n");
+  }, [name, company, email, type, budget, timeline, details]);
 
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-  const Field = ({
-    value,
-    onChange,
-    placeholder,
-    type = "text",
-    width = "w-44",
+  const inputCls =
+    "w-full bg-transparent border-b-2 border-background/30 focus:border-primary outline-none py-3 font-grotesk text-lg text-background placeholder:text-background/40 transition-colors";
+
+  const Pill = ({
+    active,
+    onClick,
+    children,
   }: {
-    value: string;
-    onChange: (v: string) => void;
-    placeholder: string;
-    type?: string;
-    width?: string;
+    active: boolean;
+    onClick: () => void;
+    children: React.ReactNode;
   }) => (
-    <input
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      type={type}
-      placeholder={placeholder}
-      className={`${width} bg-transparent border-b-2 border-foreground/60 focus:border-primary outline-none px-1 font-display text-primary placeholder:text-foreground/30 placeholder:font-serif-display placeholder:italic transition-colors`}
-    />
+    <button
+      type="button"
+      onClick={onClick}
+      className={`font-mono-label px-3 py-2 border-2 transition-colors ${
+        active
+          ? "bg-primary border-primary text-primary-foreground"
+          : "border-background/30 text-background/80 hover:border-background"
+      }`}
+    >
+      {children}
+    </button>
   );
 
   return (
-    <section id="contact" className="bg-foreground text-background py-24 md:py-40">
-      <div className="editorial">
-        <div className="grid grid-cols-12 gap-8 mb-16">
-          <p className="col-span-12 md:col-span-2 font-mono-label text-background/60">— 07 / Contact</p>
-          <h2 className="col-span-12 md:col-span-10 font-display text-5xl md:text-8xl">
-            Write us<br />
-            <span className="font-serif-display italic font-normal text-primary">a letter.</span>
-          </h2>
+    <section id="contact" className="bg-foreground text-background">
+      {/* Header strip */}
+      <div className="editorial pt-24 pb-16 hairline-b border-background/20">
+        <div className="grid grid-cols-12 gap-8 items-end">
+          <div className="col-span-12 md:col-span-8">
+            <p className="font-mono-label text-background/60 mb-6">— 07 / Contact</p>
+            <h2 className="font-display text-5xl md:text-7xl">
+              Let's start{" "}
+              <span className="font-serif-display italic font-light text-primary">something good.</span>
+            </h2>
+          </div>
+          <p className="col-span-12 md:col-span-4 font-serif-display italic text-lg md:text-xl text-background/70 text-pretty">
+            Fill the brief — we reply on WhatsApp within 24 hours, every weekday.
+          </p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 lg:col-span-9">
-            <p className="font-serif-display text-2xl md:text-4xl leading-[1.5] text-pretty">
-              Hi PalX, I'm{" "}
-              <Field value={name} onChange={setName} placeholder="your name" />{" "}
-              from{" "}
-              <Field value={company} onChange={setCompany} placeholder="company" />.
-              I'd love to talk about a{" "}
-              <select
-                value={project}
-                onChange={(e) => setProject(e.target.value)}
-                className="bg-transparent border-b-2 border-background/60 focus:border-primary outline-none px-1 font-display text-primary cursor-pointer"
-              >
-                {projectOptions.map((o) => (
-                  <option key={o.k} value={o.v} className="bg-foreground text-background">{o.v}</option>
+      {/* Form + sidebar */}
+      <div className="editorial py-16 grid grid-cols-12 gap-8 lg:gap-16">
+        {/* FORM */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            window.open(href, "_blank");
+          }}
+          className="col-span-12 lg:col-span-8 space-y-12"
+        >
+          {/* Section: who */}
+          <fieldset className="space-y-6">
+            <legend className="font-mono-label text-background/50 mb-4">01 — About you</legend>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+              <div>
+                <label className="font-mono-label text-background/60">Your name</label>
+                <input className={inputCls} value={name} onChange={(e) => setName(e.target.value)} placeholder="Aanya Reddy" required />
+              </div>
+              <div>
+                <label className="font-mono-label text-background/60">Company</label>
+                <input className={inputCls} value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Vanal Studio" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="font-mono-label text-background/60">Email</label>
+                <input type="email" className={inputCls} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="hello@yourdomain.com" required />
+              </div>
+            </div>
+          </fieldset>
+
+          {/* Section: project */}
+          <fieldset className="space-y-6">
+            <legend className="font-mono-label text-background/50 mb-4">02 — The project</legend>
+            <div>
+              <p className="font-mono-label text-background/60 mb-3">What do you need?</p>
+              <div className="flex flex-wrap gap-2">
+                {projectTypes.map((t) => (
+                  <Pill key={t} active={type === t} onClick={() => setType(t)}>{t}</Pill>
                 ))}
-              </select>{" "}
-              project with a budget around{" "}
-              <span className="inline-flex flex-wrap gap-2 align-middle">
+              </div>
+            </div>
+            <div>
+              <p className="font-mono-label text-background/60 mb-3">Budget range</p>
+              <div className="flex flex-wrap gap-2">
                 {budgets.map((b) => (
-                  <button
-                    key={b.k}
-                    onClick={() => setBudget(b.v)}
-                    className={`font-mono-label px-3 py-1 border-2 transition-colors ${
-                      budget === b.v
-                        ? "bg-primary border-primary text-primary-foreground"
-                        : "border-background/40 hover:border-background"
-                    }`}
-                  >
-                    {b.v}
-                  </button>
+                  <Pill key={b} active={budget === b} onClick={() => setBudget(b)}>{b}</Pill>
                 ))}
-              </span>
-              . You can reach me at{" "}
-              <Field value={email} onChange={setEmail} placeholder="email@domain.com" type="email" width="w-64" />.
-            </p>
+              </div>
+            </div>
+            <div>
+              <p className="font-mono-label text-background/60 mb-3">Timeline</p>
+              <div className="flex flex-wrap gap-2">
+                {timelines.map((t) => (
+                  <Pill key={t} active={timeline === t} onClick={() => setTimeline(t)}>{t}</Pill>
+                ))}
+              </div>
+            </div>
+          </fieldset>
 
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-12 inline-flex items-center gap-6 bg-primary text-primary-foreground font-display text-2xl md:text-4xl px-8 md:px-12 py-6 md:py-8 hover:bg-orange-soft transition-colors group"
+          {/* Section: details */}
+          <fieldset className="space-y-4">
+            <legend className="font-mono-label text-background/50 mb-4">03 — Tell us more</legend>
+            <label className="font-mono-label text-background/60">A few sentences about what you're building</label>
+            <textarea
+              className={`${inputCls} resize-none`}
+              rows={4}
+              value={details}
+              onChange={(e) => setDetails(e.target.value)}
+              placeholder="We're launching a new label for handwoven textiles and need a homepage that feels like a magazine spread…"
+            />
+          </fieldset>
+
+          {/* Submit */}
+          <div className="pt-4 hairline border-background/20">
+            <button
+              type="submit"
+              className="mt-8 w-full md:w-auto group inline-flex items-center justify-between gap-8 bg-primary text-primary-foreground font-display text-2xl md:text-3xl px-8 md:px-12 py-6 hover:bg-orange-soft transition-colors"
             >
-              SEND VIA WHATSAPP
-              <span className="transition-transform group-hover:translate-x-2">→</span>
-            </a>
+              <span>Send via WhatsApp</span>
+              <span className="text-3xl group-hover:translate-x-2 transition-transform">→</span>
+            </button>
+            <p className="font-mono-label text-background/50 mt-4">
+              Opens WhatsApp with your brief pre-filled. No spam, ever.
+            </p>
+          </div>
+        </form>
+
+        {/* SIDEBAR */}
+        <aside className="col-span-12 lg:col-span-4 space-y-10">
+          {/* Direct */}
+          <div className="border-2 border-background/30 p-6">
+            <p className="font-mono-label text-background/50 mb-4">Prefer the old way?</p>
+            <div className="space-y-4">
+              <a href="mailto:hello@palx.studio" className="block group">
+                <p className="font-mono-label text-background/50">Email</p>
+                <p className="font-serif-display text-2xl group-hover:text-primary transition-colors">hello@palx.studio</p>
+              </a>
+              <a href="tel:+919999999999" className="block group">
+                <p className="font-mono-label text-background/50">Phone</p>
+                <p className="font-serif-display text-2xl group-hover:text-primary transition-colors">+91 99999 99999</p>
+              </a>
+            </div>
           </div>
 
-          <aside className="col-span-12 lg:col-span-3 space-y-8 lg:pt-4">
+          {/* Studio */}
+          <div>
+            <p className="font-mono-label text-background/50 mb-3">Studio</p>
+            <p className="font-serif-display text-xl leading-snug">
+              Lake Pichola Road,<br />
+              Udaipur, Rajasthan 313001<br />
+              India
+            </p>
+            <p className="font-mono-label text-background/50 mt-3">24.5854° N · 73.7125° E</p>
+          </div>
+
+          {/* Hours */}
+          <div>
+            <p className="font-mono-label text-background/50 mb-3">Hours</p>
+            <p className="font-serif-display text-xl">Mon — Fri</p>
+            <p className="font-serif-display text-xl">10:00 — 19:00 IST</p>
+          </div>
+
+          {/* FAQ mini */}
+          <div className="space-y-4 pt-6 border-t border-background/20">
+            <p className="font-mono-label text-background/50">FAQ</p>
             <div>
-              <p className="font-mono-label text-background/50 mb-2">Studio</p>
-              <p className="font-grotesk">Lake Pichola Road<br />Udaipur, Rajasthan 313001<br />India</p>
+              <p className="font-grotesk font-medium">Do you work with overseas clients?</p>
+              <p className="font-serif-display italic text-background/70 text-sm mt-1">Yes — most of our work is remote.</p>
             </div>
             <div>
-              <p className="font-mono-label text-background/50 mb-2">Direct</p>
-              <p className="font-grotesk">hello@palx.studio<br />+91 99999 99999</p>
+              <p className="font-grotesk font-medium">What's the smallest project you take?</p>
+              <p className="font-serif-display italic text-background/70 text-sm mt-1">Around ₹1L — usually a brand mark or a one-pager.</p>
             </div>
-            <div>
-              <p className="font-mono-label text-background/50 mb-2">Hours</p>
-              <p className="font-grotesk">Mon — Fri<br />10:00 — 19:00 IST</p>
-            </div>
-          </aside>
-        </div>
+          </div>
+        </aside>
       </div>
     </section>
   );
