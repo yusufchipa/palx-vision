@@ -39,12 +39,6 @@ export const Manifesto = () => {
             <div className="aspect-[4/5] md:aspect-[5/6] overflow-hidden grain bg-background">
               <img src={team} alt="The PalX team at work" className="w-full h-full object-cover" loading="lazy" />
             </div>
-            <figcaption className="mt-4 grid grid-cols-12 gap-4">
-              <span className="col-span-2 font-mono-label text-foreground/60">Plate II</span>
-              <span className="col-span-10 font-serif-display italic text-foreground/70">
-                Aanya & Karan reviewing the second draft of the Vanal homepage. Photographed on a Tuesday.
-              </span>
-            </figcaption>
           </motion.figure>
 
           {/* RIGHT — dossier card */}

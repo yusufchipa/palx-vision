@@ -12,7 +12,11 @@ const projectTypes = [
 const budgets = ["< ₹1L", "₹1–5L", "₹5–15L", "₹15L+", "Let's talk"];
 const timelines = ["ASAP", "1–3 months", "3–6 months", "Flexible"];
 
-const WHATSAPP_NUMBER = "916375788511";
+const WA_API_URL = import.meta.env.VITE_WA_API_URL as string;
+const WA_APP_KEY = import.meta.env.VITE_WA_APP_KEY as string;
+const WA_AUTH_KEY = import.meta.env.VITE_WA_AUTH_KEY as string;
+const WA_TO = import.meta.env.VITE_WA_TO as string;
+
 
 export const Contact = () => {
   const [name, setName] = useState("");
@@ -22,6 +26,7 @@ export const Contact = () => {
   const [budget, setBudget] = useState(budgets[1]);
   const [timeline, setTimeline] = useState(timelines[1]);
   const [details, setDetails] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const message = useMemo(() => {
     const lines = [
@@ -41,7 +46,27 @@ export const Contact = () => {
     return lines.join("\n");
   }, [name, company, email, type, budget, timeline, details]);
 
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const fd = new FormData();
+      fd.append("appkey", WA_APP_KEY);
+      fd.append("authkey", WA_AUTH_KEY);
+      fd.append("to", WA_TO);
+      fd.append("message", message);
+      const res = await fetch(WA_API_URL, { method: "POST", body: fd });
+      const json = await res.json();
+      if (json?.message_status === "Success" || res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
 
   const inputCls =
     "w-full bg-transparent border-b-2 border-background/30 focus:border-primary outline-none py-3 font-grotesk text-lg text-background placeholder:text-background/40 transition-colors";
@@ -59,8 +84,8 @@ export const Contact = () => {
       type="button"
       onClick={onClick}
       className={`font-mono-label px-3 py-2 border-2 transition-colors ${active
-          ? "bg-primary border-primary text-primary-foreground"
-          : "border-background/30 text-background/80 hover:border-background"
+        ? "bg-primary border-primary text-primary-foreground"
+        : "border-background/30 text-background/80 hover:border-background"
         }`}
     >
       {children}
@@ -89,10 +114,7 @@ export const Contact = () => {
       <div className="editorial py-16 grid grid-cols-12 gap-8 lg:gap-16">
         {/* FORM */}
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            window.open(href, "_blank");
-          }}
+          onSubmit={handleSubmit}
           className="col-span-12 lg:col-span-8 space-y-12"
         >
           {/* Section: who */}
@@ -160,13 +182,22 @@ export const Contact = () => {
           <div className="pt-4 hairline border-background/20">
             <button
               type="submit"
-              className="mt-8 w-full md:w-auto group inline-flex items-center justify-between gap-8 bg-primary text-primary-foreground font-display text-2xl md:text-3xl px-8 md:px-12 py-6 hover:bg-orange-soft transition-colors"
+              disabled={status === "sending"}
+              className="mt-8 w-full md:w-auto group inline-flex items-center justify-between gap-8 bg-primary text-primary-foreground font-display text-2xl md:text-3xl px-8 md:px-12 py-6 hover:bg-orange-soft transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              <span>Send via WhatsApp</span>
-              <span className="text-3xl group-hover:translate-x-2 transition-transform">→</span>
+              <span>
+                {status === "sending" ? "Sending…" : status === "success" ? "Message sent ✓" : status === "error" ? "Try again" : "Send message"}
+              </span>
+              {status !== "success" && (
+                <span className="text-3xl group-hover:translate-x-2 transition-transform">→</span>
+              )}
             </button>
             <p className="font-mono-label text-background/50 mt-4">
-              Opens WhatsApp with your brief pre-filled. No spam, ever.
+              {status === "success"
+                ? "We received your brief — we'll be in touch within 24 hours."
+                : status === "error"
+                  ? "Something went wrong. Please email us at palx.hub@gmail.com"
+                  : "We reply within 24 hours, every weekday. No spam, ever."}
             </p>
           </div>
         </form>
