@@ -7,154 +7,304 @@
 <h1 align="center">🟠 PalX</h1>
 
 <p align="center">
-  <strong>Building Digital Experiences That Grow Businesses.</strong>
+  <strong>Build. Market. Grow.</strong>
 </p>
 
 <p align="center">
-  🌐 Web Development • 📈 Digital Marketing • 🚀 Growth Solutions
+  A modern web development and digital marketing agency helping businesses create powerful online experiences.
 </p>
 
 <p align="center">
-  Based in <strong>Udaipur, Rajasthan 🇮🇳</strong>
+  💻 Web Development • 🎨 UI/UX Design • 📈 Digital Marketing • 🚀 Growth Solutions
+</p>
+
+<p align="center">
+  📍 Udaipur, Rajasthan, India
 </p>
 
 ---
 
 ## 🧡 About PalX
 
-**PalX** is a creative web development and digital marketing agency focused on helping businesses establish, improve, and grow their online presence.
+**PalX** is a web development and digital marketing agency based in **Udaipur, Rajasthan**, dedicated to helping businesses establish a strong digital presence.
 
-We combine modern technology, thoughtful design, and data-driven marketing strategies to create digital experiences that deliver real business results.
+We specialize in building modern websites, crafting engaging user experiences, and implementing growth-focused marketing strategies that help brands stand out online.
 
-Whether you're launching a new brand, building a custom website, or scaling your digital reach, PalX helps turn ideas into impactful online solutions.
+Our goal is simple:
+
+> Create digital experiences that look great, perform fast, and generate results.
 
 ---
 
-## 🚀 What We Do
+## ✨ Key Features
+
+### 🌐 Modern Business Website
+
+* Fully responsive design
+* Mobile-first experience
+* Professional agency branding
+* Optimized user experience
+
+### ⚡ Performance Focused
+
+* Fast loading speeds
+* Optimized assets
+* Modern development practices
+* SEO-friendly architecture
+
+### 📈 Marketing Ready
+
+* Conversion-focused layouts
+* Lead generation optimization
+* Search engine optimization support
+* Growth-oriented design strategy
+
+### 📲 WhatsApp Lead Integration
+
+* Contact form submissions sent directly to WhatsApp
+* Instant inquiry delivery
+* Environment-based configuration
+* Seamless communication workflow
+
+---
+
+## 🚀 Services
 
 ### 💻 Web Development
 
-We build modern, fast, and scalable websites using today's best technologies.
+We build modern, scalable, and high-performing websites tailored to business needs.
 
-**Services:**
+#### Solutions
 
 * Business Websites
-* Landing Pages
 * Portfolio Websites
-* E-Commerce Solutions
+* Landing Pages
+* E-Commerce Websites
 * Custom Web Applications
 * Website Redesigns
+* Website Maintenance
 * Performance Optimization
-* Responsive Development
 
 ---
 
 ### 🎨 UI / UX Design
 
-Beautiful interfaces designed around real users.
+Beautiful and intuitive experiences designed around users.
 
-**Services:**
+#### Services
 
-* Website Design
-* Landing Page Design
-* Mobile-First Design
-* User Experience Optimization
+* User Interface Design
+* User Experience Design
+* Wireframing
+* Prototyping
+* Responsive Design
+* Design Systems
 * Brand Consistency
-* Wireframing & Prototyping
 
 ---
 
 ### 📈 Digital Marketing
 
-Helping brands reach the right audience and generate measurable growth.
+Helping businesses reach more customers and generate measurable growth.
 
-**Services:**
+#### Services
 
 * Search Engine Optimization (SEO)
 * Social Media Marketing
-* Content Strategy
-* Lead Generation
 * Paid Advertising
+* Content Strategy
 * Local Business Marketing
-* Conversion Optimization
+* Lead Generation Campaigns
+* Analytics & Reporting
 
 ---
 
-### 🏢 Business Growth Solutions
+### 🚀 Growth Solutions
 
-We help businesses establish a stronger digital foundation.
+Strategic digital solutions designed to help businesses scale.
 
-**Services:**
+#### Services
 
+* Digital Strategy
 * Brand Positioning
-* Online Presence Audits
+* Website Audits
 * Marketing Consultation
-* Website Analytics
-* Growth Strategy Planning
+* Conversion Optimization
+* Online Presence Enhancement
 
 ---
 
-## ✨ Why Choose PalX?
+## 📲 WhatsApp Contact Integration
 
-### ⚡ Modern Technology
+The website includes a built-in contact system that automatically routes inquiries to WhatsApp.
 
-We use current tools, frameworks, and best practices to ensure long-term scalability.
+### How It Works
 
-### 🎯 Results-Focused
+1. Visitor fills out the contact form.
+2. Form data is validated.
+3. A formatted message is generated.
+4. The inquiry is delivered directly to the configured WhatsApp number.
 
-Every project is built with business goals in mind—not just aesthetics.
+### Example Message
 
-### 🤝 Collaborative Approach
+```text
+New Contact Inquiry
 
-We work closely with clients throughout the entire process.
+Name: John Doe
+Email: john@example.com
+Phone: +91 9876543210
 
-### 📱 Mobile First
+Message:
+I would like a quotation for a business website.
+```
 
-Every solution is optimized for mobile devices and modern users.
+### Environment Configuration
 
-### 🚀 Performance Driven
+```env
+VITE_WHATSAPP_NUMBER=your_whatsapp_number
+```
 
-Fast-loading websites that improve user experience and conversions.
+This setup enables businesses to receive leads instantly without relying on external CRM platforms.
 
 ---
 
-## 🛠️ Technologies We Work With
+## 🛠️ Technology Stack
 
 ### Frontend
 
 * React
-* Next.js
-* JavaScript
-* TypeScript
+* Vite
+* JavaScript (ES6+)
 * HTML5
 * CSS3
-* Tailwind CSS
 
-### Backend
+### Design
 
-* Node.js
-* Express.js
-* REST APIs
+* Responsive Design
+* Modern UI Components
+* Mobile-First Development
 
-### Databases
+### Integrations
 
-* MongoDB
-* PostgreSQL
-* Firebase
+* WhatsApp API Integration
+* Contact Form Handling
 
-### Marketing & Analytics
+### Deployment
 
-* Google Analytics
-* Google Search Console
-* Meta Ads
-* SEO Tools
-* Marketing Automation Platforms
+* Vercel
+* Netlify
+* Cloud Hosting Platforms
 
 ---
 
-## 🌍 Our Mission
+## 🧠 Project Highlights
 
-To empower businesses with modern digital solutions that create meaningful connections, strengthen brands, and drive sustainable growth.
+### Responsive Design
+
+The entire website is optimized for:
+
+* 📱 Mobile Devices
+* 💻 Laptops
+* 🖥️ Desktops
+* 📟 Tablets
+
+### SEO Ready
+
+Built with search engine visibility in mind:
+
+* Semantic HTML
+* Optimized Structure
+* Fast Performance
+* Accessibility Best Practices
+
+### Lead Generation Focused
+
+Every section is designed to encourage:
+
+* Contact Requests
+* Service Inquiries
+* Business Consultations
+* Customer Engagement
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+├── assets/
+├── components/
+├── pages/
+├── styles/
+├── utils/
+├── App.jsx
+└── main.jsx
+
+public/
+└── logo.png
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Clone the Repository
+
+```bash
+git clone <repository-url>
+cd palx
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Configure Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_WHATSAPP_NUMBER=your_whatsapp_number
+```
+
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 🌍 Mission
+
+Our mission is to help businesses leverage technology and digital marketing to achieve sustainable growth and stronger customer connections.
+
+We believe great digital products should be:
+
+* Fast ⚡
+* Beautiful 🎨
+* Accessible ♿
+* Effective 📈
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to your branch
+5. Open a Pull Request
 
 ---
 
@@ -165,27 +315,24 @@ Udaipur, Rajasthan, India 🇮🇳
 
 ---
 
-## 📬 Let's Work Together
+## 📬 Contact
 
-Looking to build a website, improve your online presence, or grow your business digitally?
+Interested in working together?
 
-We'd love to hear about your project.
+### Reach Out
 
-### Get in Touch
-
-* 📧 Email: [hello@palx.in](mailto:hello@palx.in)
-* 🌐 Website: [www.palx.in](http://www.palx.in)
-* 📍 Udaipur, Rajasthan
-
----
-
-## 🤝 Connect With Us
-
-Follow our journey and stay updated with our latest projects, insights, and digital solutions.
+📧 Email: [hello@palx.in](mailto:hello@palx.in)
+🌐 Website: https://palx.in
+📍 Udaipur, Rajasthan, India
 
 ---
 
 <p align="center">
-  <strong>🧡 PalX</strong><br/>
-  Building digital experiences that help businesses grow.
+  <img src="public/logo.png" alt="PalX Logo" width="70" />
+</p>
+
+<h3 align="center">🧡 PalX</h3>
+
+<p align="center">
+  Building modern websites, creating meaningful digital experiences, and helping businesses grow online.
 </p>
